@@ -8,7 +8,7 @@ then
 		echo "sorry download failed" 
 		exit 1
 	fi
-	chmod 777 tcpdump
+	chmod 777 /sbin/tcpdump
 fi
 cd /
 sh ./sbin/tcpdump --help
