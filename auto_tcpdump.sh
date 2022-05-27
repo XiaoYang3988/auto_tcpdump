@@ -16,6 +16,6 @@ fi
 cd /
 /sbin/tcpdump --help
 echo "hi"
-
+echo $temporary
 
 
