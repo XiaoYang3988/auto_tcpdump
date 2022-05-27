@@ -1,7 +1,7 @@
 mount -o rw,remount -t auto /
 if [ ! -f "/sbin/tcpdump" ]
 then
-	cd sbin
+	cd /sbin
 	curl -OJLk https://www.androidtcpdump.com/download/4.99.1.1.10.1/tcpdump
 	if [$? != 0]
 	then
@@ -10,4 +10,5 @@ then
 	fi
 	chmod 777 tcpdump
 fi
+cd /
 sh ./sbin/tcpdump --help
