@@ -1,5 +1,5 @@
 mount -o rw,remount -t auto /
-[-f "/sbin/tcpdump"]
+[ -f "/sbin/tcpdump" ]
 if [ $? != 0 ]
 then
 	cd /sbin
