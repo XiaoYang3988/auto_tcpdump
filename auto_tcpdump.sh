@@ -1,5 +1,7 @@
 temporary=$(date '+%Y-%m-%d')
+echo $temporary
 temporary=$(date -d $temporary '+%Y-%m-%d %H:%M:%S')
+echo $temporary
 mount -o rw,remount -t auto /
 [ -f "/sbin/tcpdump" ]
 if [ $? != 0 ]
