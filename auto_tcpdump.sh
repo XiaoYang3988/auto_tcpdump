@@ -11,4 +11,4 @@ then
 	chmod 777 /sbin/tcpdump
 fi
 cd /
-sh ./sbin/tcpdump --help
+/sbin/tcpdump --help
