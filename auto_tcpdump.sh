@@ -3,7 +3,7 @@ if [ ! -f "/sbin/tcpdump" ]
 then
 	cd /sbin
 	curl -OJLk https://www.androidtcpdump.com/download/4.99.1.1.10.1/tcpdump
-	if [$? != 0]
+	if [!($? == 0)]
 	then
 		echo "sorry download failed" 
 		exit 1
