@@ -5,7 +5,6 @@ get_zero_time_difference_value(){
 	echo $remain
 	return $?
 }
-
 get_flash_memory_remaining_space(){
 	data=$(df -a | grep /storage/emulated | grep -Eo '[0-9]{1,100}')
 	array=($data)
