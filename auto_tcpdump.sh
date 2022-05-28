@@ -18,7 +18,7 @@ loop_delete_tcpdump_data_file(){
 		flash_space=$(get_flash_memory_remaining_space)
 		if [ $flash_space -gt 10485760 ]
 		then
-			echo "Space is enough"
+			#echo "Space is enough"
 			return
 		fi
 		file_name=$(ls -rt | head -n 1)
@@ -69,3 +69,4 @@ do
 	killall -SIGINT tcpdump
 	loop_delete_tcpdump_data_file
 	sleep 60
+done
