@@ -55,7 +55,6 @@ then
 	echo "sorry Flash space is less than 10g"
 	exit 1
 fi
-echo $(date +%s)
 while true
 do
 	echo "tcpdump start"
