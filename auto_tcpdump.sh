@@ -76,13 +76,13 @@ do
         flash_space=$(get_flash_memory_remaining_space)
         remain_space=$(expr $flash_space \* 1024)
         double_file_size=$(expr $file_size \* 2)
-	echo "remain_space:"$remain_space
-	echo "double_file_size:"$double_file_size
+        echo "remain_space:"$remain_space
+        echo "double_file_size:"$double_file_size
         if [[ $file_size -gt 1073741824 && $remain_space -gt $double_file_size ]]
         then
-			echo "tcpdump split file"
-			tcpdump -r $file_name.pcap -w $file_name"_0" -C 1000
-			rm -f $file_name.pcap
+	        echo "tcpdump split file"
+	        tcpdump -r $file_name.pcap -w $file_name"_0" -C 1000
+	        rm -f $file_name.pcap
         fi
         loop_delete_tcpdump_data_file
         sleep 60
