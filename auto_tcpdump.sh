@@ -79,7 +79,7 @@ do
         double_file_size=$(expr $file_size \* 2)
         echo "remain_space:"$remain_space
         echo "file_size:"$file_size
-        if [[ $file_size -gt 1073741824  && $remain_space -gt $double_file_size ]]
+        if [[ $file_size -gt 1073741824 && $remain_space -gt $double_file_size ]]
         then
                     echo "tcpdump split file"
                     tcpdump -r $file_name.pcap -w $file_name"_0" -C 10
