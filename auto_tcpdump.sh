@@ -82,7 +82,7 @@ do
 				cd /storage/emulated/0/tcpdump_data
 				tcpdump -r $file_name.pcap -w $file_name"_" -C 1000
 			fi
-		fi
+        fi
         loop_delete_tcpdump_data_file
         sleep 60
 done
