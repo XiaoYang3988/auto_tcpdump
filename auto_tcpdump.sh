@@ -67,21 +67,20 @@ do
         file_name=$(date "+%Y%m%d_%H%M%S")
         tcpdump -i wlan0 -s 0 -w /storage/emulated/0/tcpdump_data/$file_name.pcap&
         diff_time=$(get_zero_time_difference_value)
-        echo $diff_time
+        echo “tcpdump stop time:”$diff_time
         sleep $diff_time
         echo "tcpdump stop"
         killall -SIGINT tcpdump
-        file_size=$(ls -l $file_name | awk '{ print $5 }')
-        if [ $file_size -gt 1073741824 ]
+        cd /storage/emulated/0/tcpdump_data
+        file_size=$(ls -l $file_name.pcap | awk '{ print $5 }')
+        flash_space=$(get_flash_memory_remaining_space)
+        remain_space=$(expr $flash_space \* 1024)
+        double_file_size=$(expr $file_size \* 2)
+        if [ $file_size -gt 1073741824 -a $remain_space -gt $double_file_size ]
         then
-			flash_space=$(get_flash_memory_remaining_space)
-			remain_space=$(expr $flash_space \* 1024)
-			double_file_size=$(expr $file_size \* 2)
-			if [ $remain_space -gt $double_file_size ]
-			then
-				cd /storage/emulated/0/tcpdump_data
-				tcpdump -r $file_name.pcap -w $file_name"_0" -C 1000
-			fi
+			echo "tcpdump split file"
+			tcpdump -r $file_name.pcap -w $file_name"_0" -C 1000
+			rm -f $file_name.pcap
         fi
         loop_delete_tcpdump_data_file
         sleep 60
