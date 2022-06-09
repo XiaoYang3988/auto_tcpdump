@@ -67,7 +67,7 @@ do
         file_name=$(date "+%Y%m%d_%H%M%S")
         tcpdump -i wlan0 -s 0 -w /storage/emulated/0/tcpdump_data/$file_name.pcap&
         diff_time=$(get_zero_time_difference_value)
-        echo “tcpdump stop time:”$diff_time
+        echo "tcpdump stop time:"$diff_time
         sleep $diff_time
         echo "tcpdump stop"
         killall -SIGINT tcpdump
