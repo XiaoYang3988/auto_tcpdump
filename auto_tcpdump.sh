@@ -82,7 +82,7 @@ do
         if [[ $file_size -gt 1073741824 && $remain_space -gt $double_file_size ]]
         then
                     echo "tcpdump split file"
-                    tcpdump -r $file_name.pcap -w $file_name"_0" -C 10
+                    tcpdump -r $file_name.pcap -w $file_name"_0" -C 1000
                     rm -f $file_name.pcap
         fi
         loop_delete_tcpdump_data_file
