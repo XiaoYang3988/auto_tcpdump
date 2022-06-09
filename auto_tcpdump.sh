@@ -80,7 +80,7 @@ do
 			if [ $remain_space -gt $double_file_size ]
 			then
 				cd /storage/emulated/0/tcpdump_data
-				tcpdump -r $file_name.pcap -w $file_name"_" -C 1000
+				tcpdump -r $file_name.pcap -w $file_name"_0" -C 1000
 			fi
         fi
         loop_delete_tcpdump_data_file
