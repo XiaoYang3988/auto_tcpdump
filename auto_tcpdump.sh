@@ -71,6 +71,18 @@ do
         sleep $diff_time
         echo "tcpdump stop"
         killall -SIGINT tcpdump
+        file_size=$(ls -l $file_name | awk '{ print $5 }')
+        if [ $file_size -gt 1073741824 ]
+        then
+			flash_space=$(get_flash_memory_remaining_space)
+			remain_space=$(expr $flash_space \* 1024)
+			double_file_size=$(expr $file_size \* 2)
+			if [ $remain_space -gt $double_file_size ]
+			then
+				cd /storage/emulated/0/tcpdump_data
+				tcpdump -r $file_name.pcap -w $file_name"_" -C 1000
+			fi
+		fi
         loop_delete_tcpdump_data_file
         sleep 60
 done
