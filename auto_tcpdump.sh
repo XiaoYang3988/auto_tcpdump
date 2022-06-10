@@ -71,7 +71,7 @@ do
         sleep $diff_time
         echo "tcpdump stop"
         killall -SIGINT tcpdump
-        sleep 60
+        sleep 300
         cd /storage/emulated/0/tcpdump_data
         file_size=$(ls -l $file_name.pcap | awk '{ print $5 }')
         flash_space_1=$(get_flash_memory_remaining_space)
